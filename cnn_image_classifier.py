@@ -8,6 +8,7 @@ import pandas as pd
 import numpy as np
 import json
 import sys
+import time
 import os
 
 def read_config(json_path):
@@ -15,39 +16,26 @@ def read_config(json_path):
         json_dict = json.load(fp)
         return json_dict
 
-def cnn_model():
-    #--------------------------Layer1----------------------------#
+def cnn_model(num_cnn_layers, num_filters, kernel_size, activation_cnn, activation_fc, dense_neurons, img_size, pool_kernel):
+
+    #Model Initialization
     model = Sequential()
-    model.add(Conv2D(16, kernel_size = (3, 3), padding= "valid"))
-    model.add(Activation('relu'))
-    model.add(MaxPooling2D(pool_size=(2, 2)))
 
-    #--------------------------Layer2----------------------------#
-    model.add(Conv2D(32, kernel_size = (3, 3), padding= "valid"))
-    model.add(Activation('relu'))
-    model.add(MaxPooling2D(pool_size=(2, 2)))
+    #Add subsequent convolution layers
+    for i in range(num_cnn_layers):
+        print("Adding {}th layer to the network".format(i))
+        model.add(Conv2D(num_filters[i], (kernel_size, kernel_size), padding= "valid"))
+        model.add(Activation(activation_cnn))
+        model.add(MaxPooling2D(pool_size=(pool_kernel, pool_kernel)))
 
-    #--------------------------Layer3----------------------------#
-    model.add(Conv2D(64, kernel_size = (3, 3), padding= "valid"))
-    model.add(Activation('relu'))
-    model.add(MaxPooling2D(pool_size=(2, 2)))
-
-    #--------------------------Layer4----------------------------#
-    model.add(Conv2D(128, kernel_size = (3, 3), padding= "valid"))
-    model.add(Activation('relu'))
-    model.add(MaxPooling2D(pool_size=(2, 2)))
-
-    #--------------------------Layer5----------------------------#
-    model.add(Conv2D(256, kernel_size = (3, 3), padding= "valid"))
-    model.add(Activation('relu'))
-    model.add(MaxPooling2D(pool_size=(2, 2)))
-
-    #--------------------------<Layer - Final>----------------------------#
+    #Fully connected layers
     model.add(Flatten())
-    model.add(Dense(100, activation = "sigmoid"))
+    model.add(Dense(dense_neurons, activation = activation_fc))
     model.add(Dense(10, activation= "softmax"))
 
+    #input_shape = (None, img_size[0], img_size[1], 3)
     input_shape = (None, 128, 128, 3)
+
     model.build(input_shape)
 
     model.summary()
@@ -58,12 +46,15 @@ def net_train():
     pass
 
 if __name__ == "__main__":
+    try:
+        json_path = sys.argv[1]
+        json_dict = read_config(json_path)
+    except:
+        if len(sys.argv) < 2:
+            print("User Error: No config file provided...using default config....")
+            json_dict = read_config(".\\cnn_config.json")
 
-    if len(sys.argv) < 2:
-        print("User Error: Please provide config path.....")
-
-    json_path = sys.argv[1]
-    json_dict = read_config(json_path)
+    
     #print(json_dict)
 
     #Read Configs
@@ -74,9 +65,12 @@ if __name__ == "__main__":
     data_augmentation = json_dict["training_params"]["data_augmentation"]
 
     num_cnn_layers = json_dict["architecture_params"]["num_cnn_layers"]
+    num_filters = json_dict["architecture_params"]["num_filters"]
     kernel_size = json_dict["architecture_params"]["kernel_size"]
+    pool_kernel = json_dict["architecture_params"]["pool_kernel"]
     optimiser = json_dict["architecture_params"]["optimiser"]
-    activation = json_dict["architecture_params"]["activation"]
+    activation_cnn = json_dict["architecture_params"]["activation_cnn"]
+    activation_fc = json_dict["architecture_params"]["activation_fc"]
     dense_neurons = json_dict["architecture_params"]["dense_neurons"]
 
     img_size = (128, 128)
@@ -135,7 +129,9 @@ if __name__ == "__main__":
         seed = 123
     )
 
-    model = cnn_model()
+    model = cnn_model(num_cnn_layers, num_filters, kernel_size, activation_cnn, activation_fc, dense_neurons, img_size, pool_kernel)
+
+    start_time = time.time()
 
     model.compile(
         optimizer= "adam",
@@ -150,3 +146,9 @@ if __name__ == "__main__":
         validation_steps = validation_generator.samples//batch_size,
         epochs = epochs
     )
+
+    end_time = time.time()
+
+    elapsed_time = end_time - start_time
+
+    print("Total time taken:", elapsed_time)
