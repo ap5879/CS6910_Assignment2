@@ -1,0 +1,158 @@
+2022-03-29 17:01:09,070 INFO    MainThread:14388 [internal.py:wandb_internal():89] W&B internal server running at pid: 14388, started at: 2022-03-29 17:01:09.066597
+2022-03-29 17:01:09,072 INFO    WriterThread:14388 [datastore.py:open_for_write():77] open: C:\cs6910_assignments\CS6910_Assignment2\wandb\run-20220329_170106-13pntl5t\run-13pntl5t.wandb
+2022-03-29 17:01:09,073 DEBUG   HandlerThread:14388 [handler.py:handle_request():131] handle_request: check_version
+2022-03-29 17:01:09,078 DEBUG   SenderThread:14388 [sender.py:send():235] send: header
+2022-03-29 17:01:09,078 DEBUG   SenderThread:14388 [sender.py:send_request():249] send_request: check_version
+2022-03-29 17:01:09,308 DEBUG   SenderThread:14388 [sender.py:send():235] send: run
+2022-03-29 17:01:09,703 INFO    SenderThread:14388 [dir_watcher.py:__init__():169] watching files in: C:\cs6910_assignments\CS6910_Assignment2\wandb\run-20220329_170106-13pntl5t\files
+2022-03-29 17:01:09,703 INFO    SenderThread:14388 [sender.py:_start_run_threads():809] run started: 13pntl5t with start time 1648553466
+2022-03-29 17:01:09,703 DEBUG   SenderThread:14388 [sender.py:send():235] send: summary
+2022-03-29 17:01:09,705 DEBUG   HandlerThread:14388 [handler.py:handle_request():131] handle_request: run_start
+2022-03-29 17:01:09,713 INFO    SenderThread:14388 [sender.py:_save_file():944] saving file wandb-summary.json with policy end
+2022-03-29 17:01:10,718 INFO    Thread-12 :14388 [dir_watcher.py:_on_file_created():217] file/dir created: C:\cs6910_assignments\CS6910_Assignment2\wandb\run-20220329_170106-13pntl5t\files\wandb-summary.json
+2022-03-29 17:01:14,742 INFO    Thread-12 :14388 [dir_watcher.py:_on_file_created():217] file/dir created: C:\cs6910_assignments\CS6910_Assignment2\wandb\run-20220329_170106-13pntl5t\files\output.log
+2022-03-29 17:01:15,172 DEBUG   HandlerThread:14388 [meta.py:__init__():36] meta init
+2022-03-29 17:01:15,172 DEBUG   HandlerThread:14388 [meta.py:__init__():50] meta init done
+2022-03-29 17:01:15,178 DEBUG   HandlerThread:14388 [meta.py:probe():210] probe
+2022-03-29 17:01:15,185 DEBUG   HandlerThread:14388 [meta.py:_setup_git():200] setup git
+2022-03-29 17:01:15,464 DEBUG   HandlerThread:14388 [meta.py:_setup_git():207] setup git done
+2022-03-29 17:01:15,465 DEBUG   HandlerThread:14388 [meta.py:_save_code():88] save code
+2022-03-29 17:01:15,601 DEBUG   HandlerThread:14388 [meta.py:_save_code():109] save code done
+2022-03-29 17:01:15,601 DEBUG   HandlerThread:14388 [meta.py:_save_patches():126] save patches
+2022-03-29 17:01:15,750 INFO    Thread-12 :14388 [dir_watcher.py:_on_file_modified():230] file/dir modified: C:\cs6910_assignments\CS6910_Assignment2\wandb\run-20220329_170106-13pntl5t\files\output.log
+2022-03-29 17:01:15,750 INFO    Thread-12 :14388 [dir_watcher.py:_on_file_created():217] file/dir created: C:\cs6910_assignments\CS6910_Assignment2\wandb\run-20220329_170106-13pntl5t\files\code\cnn_image_classifier.py
+2022-03-29 17:01:15,752 INFO    Thread-12 :14388 [dir_watcher.py:_on_file_created():217] file/dir created: C:\cs6910_assignments\CS6910_Assignment2\wandb\run-20220329_170106-13pntl5t\files\code
+2022-03-29 17:01:16,412 DEBUG   HandlerThread:14388 [meta.py:_save_patches():168] save patches done
+2022-03-29 17:01:16,412 DEBUG   HandlerThread:14388 [meta.py:_save_pip():54] save pip
+2022-03-29 17:01:16,422 DEBUG   HandlerThread:14388 [meta.py:_save_pip():68] save pip done
+2022-03-29 17:01:16,422 DEBUG   HandlerThread:14388 [meta.py:probe():248] probe done
+2022-03-29 17:01:16,446 DEBUG   HandlerThread:14388 [handler.py:handle_request():131] handle_request: stop_status
+2022-03-29 17:01:16,447 DEBUG   SenderThread:14388 [sender.py:send_request():249] send_request: stop_status
+2022-03-29 17:01:16,450 DEBUG   HandlerThread:14388 [handler.py:handle_request():131] handle_request: poll_exit
+2022-03-29 17:01:16,759 INFO    Thread-12 :14388 [dir_watcher.py:_on_file_created():217] file/dir created: C:\cs6910_assignments\CS6910_Assignment2\wandb\run-20220329_170106-13pntl5t\files\requirements.txt
+2022-03-29 17:01:16,760 INFO    Thread-12 :14388 [dir_watcher.py:_on_file_created():217] file/dir created: C:\cs6910_assignments\CS6910_Assignment2\wandb\run-20220329_170106-13pntl5t\files\diff.patch
+2022-03-29 17:01:16,760 INFO    Thread-12 :14388 [dir_watcher.py:_on_file_created():217] file/dir created: C:\cs6910_assignments\CS6910_Assignment2\wandb\run-20220329_170106-13pntl5t\files\wandb-metadata.json
+2022-03-29 17:01:16,789 DEBUG   SenderThread:14388 [sender.py:send():235] send: telemetry
+2022-03-29 17:01:16,789 DEBUG   SenderThread:14388 [sender.py:send():235] send: exit
+2022-03-29 17:01:16,789 INFO    SenderThread:14388 [sender.py:send_exit():371] handling exit code: 1
+2022-03-29 17:01:16,789 INFO    SenderThread:14388 [sender.py:send_exit():373] handling runtime: 6
+2022-03-29 17:01:16,795 INFO    SenderThread:14388 [sender.py:_save_file():944] saving file wandb-summary.json with policy end
+2022-03-29 17:01:16,796 INFO    SenderThread:14388 [sender.py:send_exit():379] send defer
+2022-03-29 17:01:16,796 DEBUG   SenderThread:14388 [sender.py:send_request():249] send_request: poll_exit
+2022-03-29 17:01:16,796 DEBUG   SenderThread:14388 [sender.py:send():235] send: files
+2022-03-29 17:01:16,797 INFO    SenderThread:14388 [sender.py:_save_file():944] saving file wandb-metadata.json with policy now
+2022-03-29 17:01:16,797 DEBUG   HandlerThread:14388 [handler.py:handle_request():131] handle_request: defer
+2022-03-29 17:01:16,797 INFO    HandlerThread:14388 [handler.py:handle_request_defer():154] handle defer: 0
+2022-03-29 17:01:16,798 INFO    SenderThread:14388 [sender.py:_save_file():944] saving file code\cnn_image_classifier.py with policy now
+2022-03-29 17:01:16,798 INFO    SenderThread:14388 [sender.py:_save_file():944] saving file diff.patch with policy now
+2022-03-29 17:01:16,800 DEBUG   SenderThread:14388 [sender.py:send_request():249] send_request: defer
+2022-03-29 17:01:16,800 INFO    SenderThread:14388 [sender.py:send_request_defer():388] handle sender defer: 0
+2022-03-29 17:01:16,800 INFO    SenderThread:14388 [sender.py:transition_state():392] send defer: 1
+2022-03-29 17:01:16,800 DEBUG   HandlerThread:14388 [handler.py:handle_request():131] handle_request: defer
+2022-03-29 17:01:16,800 INFO    HandlerThread:14388 [handler.py:handle_request_defer():154] handle defer: 1
+2022-03-29 17:01:16,820 DEBUG   SenderThread:14388 [sender.py:send_request():249] send_request: defer
+2022-03-29 17:01:16,820 INFO    SenderThread:14388 [sender.py:send_request_defer():388] handle sender defer: 1
+2022-03-29 17:01:16,820 INFO    SenderThread:14388 [sender.py:transition_state():392] send defer: 2
+2022-03-29 17:01:16,821 DEBUG   SenderThread:14388 [sender.py:send():235] send: stats
+2022-03-29 17:01:16,821 DEBUG   HandlerThread:14388 [handler.py:handle_request():131] handle_request: defer
+2022-03-29 17:01:16,821 INFO    HandlerThread:14388 [handler.py:handle_request_defer():154] handle defer: 2
+2022-03-29 17:01:16,821 DEBUG   SenderThread:14388 [sender.py:send_request():249] send_request: defer
+2022-03-29 17:01:16,821 INFO    SenderThread:14388 [sender.py:send_request_defer():388] handle sender defer: 2
+2022-03-29 17:01:16,822 INFO    SenderThread:14388 [sender.py:transition_state():392] send defer: 3
+2022-03-29 17:01:16,822 DEBUG   HandlerThread:14388 [handler.py:handle_request():131] handle_request: defer
+2022-03-29 17:01:16,822 INFO    HandlerThread:14388 [handler.py:handle_request_defer():154] handle defer: 3
+2022-03-29 17:01:16,822 DEBUG   SenderThread:14388 [sender.py:send():235] send: summary
+2022-03-29 17:01:16,827 INFO    SenderThread:14388 [sender.py:_save_file():944] saving file wandb-summary.json with policy end
+2022-03-29 17:01:16,828 DEBUG   SenderThread:14388 [sender.py:send_request():249] send_request: defer
+2022-03-29 17:01:16,828 INFO    SenderThread:14388 [sender.py:send_request_defer():388] handle sender defer: 3
+2022-03-29 17:01:16,828 INFO    SenderThread:14388 [sender.py:transition_state():392] send defer: 4
+2022-03-29 17:01:16,828 DEBUG   HandlerThread:14388 [handler.py:handle_request():131] handle_request: defer
+2022-03-29 17:01:16,828 INFO    HandlerThread:14388 [handler.py:handle_request_defer():154] handle defer: 4
+2022-03-29 17:01:16,828 DEBUG   SenderThread:14388 [sender.py:send_request():249] send_request: defer
+2022-03-29 17:01:16,828 INFO    SenderThread:14388 [sender.py:send_request_defer():388] handle sender defer: 4
+2022-03-29 17:01:16,911 DEBUG   HandlerThread:14388 [handler.py:handle_request():131] handle_request: poll_exit
+2022-03-29 17:01:17,203 INFO    SenderThread:14388 [sender.py:transition_state():392] send defer: 5
+2022-03-29 17:01:17,203 DEBUG   SenderThread:14388 [sender.py:send_request():249] send_request: poll_exit
+2022-03-29 17:01:17,203 DEBUG   HandlerThread:14388 [handler.py:handle_request():131] handle_request: defer
+2022-03-29 17:01:17,203 INFO    HandlerThread:14388 [handler.py:handle_request_defer():154] handle defer: 5
+2022-03-29 17:01:17,203 DEBUG   SenderThread:14388 [sender.py:send_request():249] send_request: defer
+2022-03-29 17:01:17,204 INFO    SenderThread:14388 [sender.py:send_request_defer():388] handle sender defer: 5
+2022-03-29 17:01:17,204 INFO    SenderThread:14388 [dir_watcher.py:finish():283] shutting down directory watcher
+2022-03-29 17:01:17,314 DEBUG   HandlerThread:14388 [handler.py:handle_request():131] handle_request: poll_exit
+2022-03-29 17:01:17,765 INFO    SenderThread:14388 [dir_watcher.py:_on_file_modified():230] file/dir modified: C:\cs6910_assignments\CS6910_Assignment2\wandb\run-20220329_170106-13pntl5t\files\config.yaml
+2022-03-29 17:01:17,766 INFO    SenderThread:14388 [dir_watcher.py:_on_file_modified():230] file/dir modified: C:\cs6910_assignments\CS6910_Assignment2\wandb\run-20220329_170106-13pntl5t\files\wandb-summary.json
+2022-03-29 17:01:17,766 INFO    SenderThread:14388 [dir_watcher.py:finish():313] scan: C:\cs6910_assignments\CS6910_Assignment2\wandb\run-20220329_170106-13pntl5t\files
+2022-03-29 17:01:17,767 INFO    SenderThread:14388 [dir_watcher.py:finish():327] scan save: C:\cs6910_assignments\CS6910_Assignment2\wandb\run-20220329_170106-13pntl5t\files\config.yaml config.yaml
+2022-03-29 17:01:17,767 INFO    SenderThread:14388 [dir_watcher.py:finish():327] scan save: C:\cs6910_assignments\CS6910_Assignment2\wandb\run-20220329_170106-13pntl5t\files\diff.patch diff.patch
+2022-03-29 17:01:17,767 INFO    SenderThread:14388 [dir_watcher.py:finish():327] scan save: C:\cs6910_assignments\CS6910_Assignment2\wandb\run-20220329_170106-13pntl5t\files\output.log output.log
+2022-03-29 17:01:17,768 INFO    SenderThread:14388 [dir_watcher.py:finish():327] scan save: C:\cs6910_assignments\CS6910_Assignment2\wandb\run-20220329_170106-13pntl5t\files\requirements.txt requirements.txt
+2022-03-29 17:01:17,771 INFO    SenderThread:14388 [dir_watcher.py:finish():327] scan save: C:\cs6910_assignments\CS6910_Assignment2\wandb\run-20220329_170106-13pntl5t\files\wandb-metadata.json wandb-metadata.json
+2022-03-29 17:01:17,771 INFO    SenderThread:14388 [dir_watcher.py:finish():327] scan save: C:\cs6910_assignments\CS6910_Assignment2\wandb\run-20220329_170106-13pntl5t\files\wandb-summary.json wandb-summary.json
+2022-03-29 17:01:17,775 INFO    SenderThread:14388 [dir_watcher.py:finish():327] scan save: C:\cs6910_assignments\CS6910_Assignment2\wandb\run-20220329_170106-13pntl5t\files\code\cnn_image_classifier.py code\cnn_image_classifier.py
+2022-03-29 17:01:17,776 INFO    SenderThread:14388 [sender.py:transition_state():392] send defer: 6
+2022-03-29 17:01:17,777 DEBUG   SenderThread:14388 [sender.py:send_request():249] send_request: poll_exit
+2022-03-29 17:01:17,779 DEBUG   HandlerThread:14388 [handler.py:handle_request():131] handle_request: defer
+2022-03-29 17:01:17,779 INFO    HandlerThread:14388 [handler.py:handle_request_defer():154] handle defer: 6
+2022-03-29 17:01:17,780 DEBUG   SenderThread:14388 [sender.py:send_request():249] send_request: defer
+2022-03-29 17:01:17,780 INFO    SenderThread:14388 [sender.py:send_request_defer():388] handle sender defer: 6
+2022-03-29 17:01:17,780 INFO    SenderThread:14388 [file_pusher.py:finish():177] shutting down file pusher
+2022-03-29 17:01:17,886 DEBUG   HandlerThread:14388 [handler.py:handle_request():131] handle_request: poll_exit
+2022-03-29 17:01:17,886 DEBUG   SenderThread:14388 [sender.py:send_request():249] send_request: poll_exit
+2022-03-29 17:01:17,972 INFO    Thread-29 :14388 [upload_job.py:push():137] Uploaded file C:\Users\anpandey\AppData\Local\Temp\tmpq_7kaq46wandb\2oz7mjbw-wandb-metadata.json
+2022-03-29 17:01:17,974 INFO    Thread-30 :14388 [upload_job.py:push():137] Uploaded file C:\Users\anpandey\AppData\Local\Temp\tmpq_7kaq46wandb\iq3ylor0-code/cnn_image_classifier.py
+2022-03-29 17:01:17,979 INFO    Thread-31 :14388 [upload_job.py:push():137] Uploaded file C:\Users\anpandey\AppData\Local\Temp\tmpq_7kaq46wandb\3bqjsel9-diff.patch
+2022-03-29 17:01:17,996 DEBUG   HandlerThread:14388 [handler.py:handle_request():131] handle_request: poll_exit
+2022-03-29 17:01:17,996 DEBUG   SenderThread:14388 [sender.py:send_request():249] send_request: poll_exit
+2022-03-29 17:01:18,103 DEBUG   HandlerThread:14388 [handler.py:handle_request():131] handle_request: poll_exit
+2022-03-29 17:01:18,103 DEBUG   SenderThread:14388 [sender.py:send_request():249] send_request: poll_exit
+2022-03-29 17:01:18,209 DEBUG   HandlerThread:14388 [handler.py:handle_request():131] handle_request: poll_exit
+2022-03-29 17:01:18,210 DEBUG   SenderThread:14388 [sender.py:send_request():249] send_request: poll_exit
+2022-03-29 17:01:18,318 DEBUG   HandlerThread:14388 [handler.py:handle_request():131] handle_request: poll_exit
+2022-03-29 17:01:18,318 DEBUG   SenderThread:14388 [sender.py:send_request():249] send_request: poll_exit
+2022-03-29 17:01:18,427 DEBUG   HandlerThread:14388 [handler.py:handle_request():131] handle_request: poll_exit
+2022-03-29 17:01:18,427 DEBUG   SenderThread:14388 [sender.py:send_request():249] send_request: poll_exit
+2022-03-29 17:01:18,537 DEBUG   HandlerThread:14388 [handler.py:handle_request():131] handle_request: poll_exit
+2022-03-29 17:01:18,537 DEBUG   SenderThread:14388 [sender.py:send_request():249] send_request: poll_exit
+2022-03-29 17:01:18,646 DEBUG   HandlerThread:14388 [handler.py:handle_request():131] handle_request: poll_exit
+2022-03-29 17:01:18,646 DEBUG   SenderThread:14388 [sender.py:send_request():249] send_request: poll_exit
+2022-03-29 17:01:18,726 INFO    Thread-32 :14388 [upload_job.py:push():137] Uploaded file C:\cs6910_assignments\CS6910_Assignment2\wandb\run-20220329_170106-13pntl5t\files\config.yaml
+2022-03-29 17:01:18,729 INFO    Thread-35 :14388 [upload_job.py:push():137] Uploaded file C:\cs6910_assignments\CS6910_Assignment2\wandb\run-20220329_170106-13pntl5t\files\wandb-summary.json
+2022-03-29 17:01:18,745 INFO    Thread-33 :14388 [upload_job.py:push():137] Uploaded file C:\cs6910_assignments\CS6910_Assignment2\wandb\run-20220329_170106-13pntl5t\files\output.log
+2022-03-29 17:01:18,754 DEBUG   HandlerThread:14388 [handler.py:handle_request():131] handle_request: poll_exit
+2022-03-29 17:01:18,754 DEBUG   SenderThread:14388 [sender.py:send_request():249] send_request: poll_exit
+2022-03-29 17:01:18,780 INFO    Thread-34 :14388 [upload_job.py:push():137] Uploaded file C:\cs6910_assignments\CS6910_Assignment2\wandb\run-20220329_170106-13pntl5t\files\requirements.txt
+2022-03-29 17:01:18,863 DEBUG   HandlerThread:14388 [handler.py:handle_request():131] handle_request: poll_exit
+2022-03-29 17:01:18,863 DEBUG   SenderThread:14388 [sender.py:send_request():249] send_request: poll_exit
+2022-03-29 17:01:18,972 DEBUG   HandlerThread:14388 [handler.py:handle_request():131] handle_request: poll_exit
+2022-03-29 17:01:18,973 DEBUG   SenderThread:14388 [sender.py:send_request():249] send_request: poll_exit
+2022-03-29 17:01:18,987 INFO    Thread-11 (_thread_body):14388 [sender.py:transition_state():392] send defer: 7
+2022-03-29 17:01:18,988 DEBUG   HandlerThread:14388 [handler.py:handle_request():131] handle_request: defer
+2022-03-29 17:01:18,988 INFO    HandlerThread:14388 [handler.py:handle_request_defer():154] handle defer: 7
+2022-03-29 17:01:18,988 DEBUG   SenderThread:14388 [sender.py:send_request():249] send_request: defer
+2022-03-29 17:01:18,988 INFO    SenderThread:14388 [sender.py:send_request_defer():388] handle sender defer: 7
+2022-03-29 17:01:19,080 DEBUG   HandlerThread:14388 [handler.py:handle_request():131] handle_request: poll_exit
+2022-03-29 17:01:19,932 INFO    SenderThread:14388 [sender.py:transition_state():392] send defer: 8
+2022-03-29 17:01:19,932 DEBUG   SenderThread:14388 [sender.py:send_request():249] send_request: poll_exit
+2022-03-29 17:01:19,932 DEBUG   HandlerThread:14388 [handler.py:handle_request():131] handle_request: defer
+2022-03-29 17:01:19,932 INFO    HandlerThread:14388 [handler.py:handle_request_defer():154] handle defer: 8
+2022-03-29 17:01:19,933 DEBUG   SenderThread:14388 [sender.py:send_request():249] send_request: defer
+2022-03-29 17:01:19,933 INFO    SenderThread:14388 [sender.py:send_request_defer():388] handle sender defer: 8
+2022-03-29 17:01:19,933 INFO    SenderThread:14388 [sender.py:transition_state():392] send defer: 9
+2022-03-29 17:01:19,933 DEBUG   HandlerThread:14388 [handler.py:handle_request():131] handle_request: defer
+2022-03-29 17:01:19,933 INFO    HandlerThread:14388 [handler.py:handle_request_defer():154] handle defer: 9
+2022-03-29 17:01:19,933 DEBUG   SenderThread:14388 [sender.py:send():235] send: final
+2022-03-29 17:01:19,934 DEBUG   SenderThread:14388 [sender.py:send():235] send: footer
+2022-03-29 17:01:19,934 DEBUG   SenderThread:14388 [sender.py:send_request():249] send_request: defer
+2022-03-29 17:01:19,934 INFO    SenderThread:14388 [sender.py:send_request_defer():388] handle sender defer: 9
+2022-03-29 17:01:20,037 DEBUG   HandlerThread:14388 [handler.py:handle_request():131] handle_request: poll_exit
+2022-03-29 17:01:20,038 DEBUG   SenderThread:14388 [sender.py:send_request():249] send_request: poll_exit
+2022-03-29 17:01:20,038 INFO    SenderThread:14388 [file_pusher.py:join():182] waiting for file pusher
+2022-03-29 17:01:20,661 DEBUG   HandlerThread:14388 [handler.py:handle_request():131] handle_request: get_summary
+2022-03-29 17:01:20,661 DEBUG   HandlerThread:14388 [handler.py:handle_request():131] handle_request: sampled_history
+2022-03-29 17:01:20,662 DEBUG   HandlerThread:14388 [handler.py:handle_request():131] handle_request: shutdown
+2022-03-29 17:01:20,662 INFO    HandlerThread:14388 [handler.py:finish():739] shutting down handler
+2022-03-29 17:01:20,948 INFO    WriterThread:14388 [datastore.py:close():281] close: C:\cs6910_assignments\CS6910_Assignment2\wandb\run-20220329_170106-13pntl5t\run-13pntl5t.wandb
+2022-03-29 17:01:21,669 INFO    SenderThread:14388 [sender.py:finish():1075] shutting down sender
+2022-03-29 17:01:21,669 INFO    SenderThread:14388 [file_pusher.py:finish():177] shutting down file pusher
+2022-03-29 17:01:21,669 INFO    SenderThread:14388 [file_pusher.py:join():182] waiting for file pusher
+2022-03-29 17:01:21,677 INFO    MainThread:14388 [internal.py:handle_exit():79] Internal process exited

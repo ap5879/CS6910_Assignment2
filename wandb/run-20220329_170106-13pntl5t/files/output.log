@@ -1,0 +1,4 @@
+Traceback (most recent call last):
+  File "C:\cs6910_assignments\CS6910_Assignment2\cnn_image_classifier.py", line 181, in <module>
+    wandb.run.name = "CNN2_" + str(CONFIG.architecture_params.num_cnn_layers) + "_dn_" + str(CONFIG.architecture_params.dense_neurons) + "_opt_" + CONFIG.architecture_params.optimiser + "_dro_" + str(CONFIG.training_params.dropout) + "_bs_" + str(CONFIG.training_params.batch_size) + "_fd_" + str(CONFIG.architecture_params.num_filters)
+AttributeError: 'dict' object has no attribute 'num_cnn_layers'

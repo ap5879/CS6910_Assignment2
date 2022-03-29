@@ -1,0 +1,32 @@
+wandb_version: 1
+
+activation_cnn:
+  value: relu
+activation_fc:
+  value: sigmoid
+batch_norm_loc:
+  value: before
+batch_size:
+  value: 120
+data_augmentation:
+  value: 'False'
+data_split:
+  value: 0.5715472693063406
+dense_neurons:
+  value: 177
+dropout:
+  value: 0.33146210224388417
+epochs:
+  value: 6
+kernel_size:
+  value: 2
+learning_rate:
+  value: 0.00011015197431777736
+net_loss_func:
+  value: mean_square_error
+num_cnn_layers:
+  value: 7
+optimiser:
+  value: rmsprop
+weight_initialisation:
+  value: random

@@ -1,0 +1,96 @@
+2022-03-29 18:47:02 INFO Running runs: []
+2022-03-29 18:47:02 INFO Agent received command: run
+2022-03-29 18:47:02 INFO Agent starting run with config:
+	activation_cnn: relu
+	activation_fc: sigmoid
+	batch_norm_loc: before
+	batch_size: 100
+	data_augmentation: False
+	data_split: 0.4805615339076994
+	dense_neurons: 136
+	dropout: 0.14046012512929054
+	epochs: 5
+	kernel_size: 2
+	learning_rate: 8.002143460193819e-05
+	net_loss_func: mean_square_error
+	num_cnn_layers: 3
+	optimiser: sgd
+	weight_initialisation: random
+2022-03-29 18:47:02 INFO About to run command: python cnn_image_classifier.py --activation_cnn=relu --activation_fc=sigmoid --batch_norm_loc=before --batch_size=100 --data_augmentation=False --data_split=0.4805615339076994 --dense_neurons=136 --dropout=0.14046012512929054 --epochs=5 --kernel_size=2 --learning_rate=8.002143460193819e-05 --net_loss_func=mean_square_error --num_cnn_layers=3 --optimiser=sgd --weight_initialisation=random
+2022-03-29 18:47:07 INFO Running runs: ['l9n4tbib']
+2022-03-29 18:47:28 INFO Cleaning up finished run: l9n4tbib
+2022-03-29 18:47:29 INFO Agent received command: run
+2022-03-29 18:47:29 INFO Agent starting run with config:
+	activation_cnn: relu
+	activation_fc: sigmoid
+	batch_norm_loc: before
+	batch_size: 120
+	data_augmentation: False
+	data_split: 0.5715472693063406
+	dense_neurons: 177
+	dropout: 0.33146210224388417
+	epochs: 6
+	kernel_size: 2
+	learning_rate: 0.00011015197431777736
+	net_loss_func: mean_square_error
+	num_cnn_layers: 7
+	optimiser: rmsprop
+	weight_initialisation: random
+2022-03-29 18:47:29 INFO About to run command: python cnn_image_classifier.py --activation_cnn=relu --activation_fc=sigmoid --batch_norm_loc=before --batch_size=120 --data_augmentation=False --data_split=0.5715472693063406 --dense_neurons=177 --dropout=0.33146210224388417 --epochs=6 --kernel_size=2 --learning_rate=0.00011015197431777736 --net_loss_func=mean_square_error --num_cnn_layers=7 --optimiser=rmsprop --weight_initialisation=random
+2022-03-29 18:47:34 INFO Running runs: ['924kgqmq']
+2022-03-29 18:47:39 INFO Cleaning up finished run: 924kgqmq
+2022-03-29 18:47:40 INFO Agent received command: run
+2022-03-29 18:47:40 INFO Agent starting run with config:
+	activation_cnn: relu
+	activation_fc: sigmoid
+	batch_norm_loc: before
+	batch_size: 51
+	data_augmentation: False
+	data_split: 0.6556924268345963
+	dense_neurons: 159
+	dropout: 0.33867954874951356
+	epochs: 15
+	kernel_size: 3
+	learning_rate: 0.00012533476535256705
+	net_loss_func: mean_square_error
+	num_cnn_layers: 8
+	optimiser: adam
+	weight_initialisation: random
+2022-03-29 18:47:40 INFO About to run command: python cnn_image_classifier.py --activation_cnn=relu --activation_fc=sigmoid --batch_norm_loc=before --batch_size=51 --data_augmentation=False --data_split=0.6556924268345963 --dense_neurons=159 --dropout=0.33867954874951356 --epochs=15 --kernel_size=3 --learning_rate=0.00012533476535256705 --net_loss_func=mean_square_error --num_cnn_layers=8 --optimiser=adam --weight_initialisation=random
+2022-03-29 18:47:45 INFO Running runs: ['pkzhlwez']
+2022-03-29 18:47:50 ERROR Detected 3 failed runs in the first 60 seconds, shutting down.
+2022-03-29 18:47:50 INFO To disable this check set WANDB_AGENT_DISABLE_FLAPPING=true
+2022-03-29 23:02:59 INFO Running runs: []
+2022-03-29 23:03:00 INFO Agent received command: run
+2022-03-29 23:03:00 INFO Agent starting run with config:
+	activation_cnn: selu
+	activation_fc: sigmoid
+	batch_size: 141
+	data_augmentation: False
+	data_split: 0.30425314903935474
+	dense_neurons: 65
+	dropout: 0.15139421343473203
+	epochs: 54
+	kernel_size: 5
+	learning_rate: 0.00020856592963307911
+	optimiser: adam
+	pool_kernel: 3
+2022-03-29 23:03:00 INFO About to run command: python cnn_image_classifier.py --activation_cnn=selu --activation_fc=sigmoid --batch_size=141 --data_augmentation=False --data_split=0.30425314903935474 --dense_neurons=65 --dropout=0.15139421343473203 --epochs=54 --kernel_size=5 --learning_rate=0.00020856592963307911 --optimiser=adam --pool_kernel=3
+2022-03-29 23:03:05 INFO Running runs: ['qor2jpay']
+2022-03-29 23:03:27 INFO Cleaning up finished run: qor2jpay
+2022-03-29 23:03:28 INFO Agent received command: run
+2022-03-29 23:03:28 INFO Agent starting run with config:
+	activation_cnn: selu
+	activation_fc: sigmoid
+	batch_size: 198
+	data_augmentation: True
+	data_split: 0.28399040217938837
+	dense_neurons: 152
+	dropout: 0.18035274141395236
+	epochs: 33
+	kernel_size: 4
+	learning_rate: 0.0006429115323913897
+	optimiser: rmsprop
+	pool_kernel: 3
+2022-03-29 23:03:28 INFO About to run command: python cnn_image_classifier.py --activation_cnn=selu --activation_fc=sigmoid --batch_size=198 --data_augmentation=True --data_split=0.28399040217938837 --dense_neurons=152 --dropout=0.18035274141395236 --epochs=33 --kernel_size=4 --learning_rate=0.0006429115323913897 --optimiser=rmsprop --pool_kernel=3
+2022-03-29 23:03:33 INFO Running runs: ['mxdastyd']

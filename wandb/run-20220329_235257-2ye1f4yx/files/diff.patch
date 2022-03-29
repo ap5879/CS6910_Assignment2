@@ -1,0 +1,163 @@
+diff --git a/cnn_config.json b/cnn_config.json
+index 83f1667..597ba1f 100644
+--- a/cnn_config.json
++++ b/cnn_config.json
+@@ -1,24 +1,19 @@
+ {
+-    "training_params":{
+-        "learning_rate": 0.0001,
+-        "epochs": 10,
+-        "lr_decay_factor": 0,
+-        "batch_size": 32,
+-        "data_split": 0.8,
+-        "data_augmentation": "False"
+-    },
+-
+-    "architecture_params":{
+-        "num_cnn_layers": 3, 
+-        "kernel_size": 5,
+-        "num_filters": [16, 32, 64, 128, 256],
+-        "pool_kernel": 2,
+-        "optimiser": "adam",
+-        "weight_initialisation": "random",
+-        "activation_cnn": "relu",
+-        "activation_fc": "sigmoid",
+-        "batch_norm_loc": "before",
+-        "dense_neurons": 100,
+-        "net_loss_func": "mean_square_error"
+-    }
++    "learning_rate": 0.0001,
++    "epochs": 10,
++    "batch_size": 32,
++    "data_split": 0.8,
++    "data_augmentation": "False",
++    "dropout": 0.2,
++    "num_cnn_layers": 5, 
++    "kernel_size": 3,
++    "num_filters": [16, 32, 64, 128, 256],
++    "pool_kernel": 2,
++    "optimiser": "adam",
++    "weight_initialisation": "random",
++    "activation_cnn": "relu",
++    "activation_fc": "sigmoid",
++    "batch_norm_loc": "before",
++    "dense_neurons": 100,
++    "net_loss_func": "mean_square_error"
+ }
+\ No newline at end of file
+diff --git a/cnn_image_classifier.py b/cnn_image_classifier.py
+index 0ee6068..66ffc64 100644
+--- a/cnn_image_classifier.py
++++ b/cnn_image_classifier.py
+@@ -9,6 +9,7 @@ import numpy as np
+ import json
+ import sys
+ import time
++from wandb.keras import WandbCallback
+ import os
+ 
+ def read_config(json_path):
+@@ -58,20 +59,21 @@ if __name__ == "__main__":
+     #print(json_dict)
+ 
+     #Read Configs
+-    learning_rate = json_dict["training_params"]["learning_rate"]
+-    epochs = json_dict["training_params"]["epochs"]
+-    batch_size = json_dict["training_params"]["batch_size"]
+-    data_split = json_dict["training_params"]["data_split"]
+-    data_augmentation = json_dict["training_params"]["data_augmentation"]
+-
+-    num_cnn_layers = json_dict["architecture_params"]["num_cnn_layers"]
+-    num_filters = json_dict["architecture_params"]["num_filters"]
+-    kernel_size = json_dict["architecture_params"]["kernel_size"]
+-    pool_kernel = json_dict["architecture_params"]["pool_kernel"]
+-    optimiser = json_dict["architecture_params"]["optimiser"]
+-    activation_cnn = json_dict["architecture_params"]["activation_cnn"]
+-    activation_fc = json_dict["architecture_params"]["activation_fc"]
+-    dense_neurons = json_dict["architecture_params"]["dense_neurons"]
++    learning_rate = json_dict["learning_rate"]
++    epochs = json_dict["epochs"]
++    batch_size = json_dict["batch_size"]
++    data_split = json_dict["data_split"]
++    data_augmentation = json_dict["data_augmentation"]
++    dropout = json_dict["dropout"]
++
++    num_cnn_layers = json_dict["num_cnn_layers"]
++    num_filters = json_dict["num_filters"]
++    kernel_size = json_dict["kernel_size"]
++    pool_kernel = json_dict["pool_kernel"]
++    optimiser = json_dict["optimiser"]
++    activation_cnn = json_dict["activation_cnn"]
++    activation_fc = json_dict["activation_fc"]
++    dense_neurons = json_dict["dense_neurons"]
+ 
+     img_size = (128, 128)
+ 
+@@ -131,10 +133,57 @@ if __name__ == "__main__":
+ 
+     model = cnn_model(num_cnn_layers, num_filters, kernel_size, activation_cnn, activation_fc, dense_neurons, img_size, pool_kernel)
+ 
++    """
++    sweep_config = {
++    "name": "Bayesian Sweep",
++    "method": "bayes",
++    "metric":{
++        "name": "val_accuracy",
++        "goal": "maximize"
++        },
++    'early_terminate': {
++        'type':'hyperband',
++        'min_iter': [3],
++        's': [2]
++        },
++    "parameters":{
++        "activation_cnn": {
++            "values": ["relu", "elu", "selu"]
++            },
++        "batch_size":{
++            "values": [32, 64, 128]
++            },
++        "data_augmentation": {
++            "values": ["True", "False"]
++            },
++        "epochs":{
++            "values": [20, 30, 40, 50, 60]
++            },
++        "learning_rate": {
++            "values": [0.0001, 0.005, 0.001]
++            },
++        "num_filters": {
++            "values": [
++                [16, 32, 64, 128, 256],
++                [32, 64, 128, 256, 512],
++                [32, 32, 32, 32, 32],
++                [512, 256, 128, 64, 32],
++                ]
++            }
++        }
++    }
++
++    sweep_id = wandb.sweep(sweep_config, project='CS6910-Assignment2', entity='anuj-sougat')
++    """
++    
+     start_time = time.time()
+ 
++    wandb.init(project = 'CS6910-Assignment2-CNNs', config = json_dict, entity='anuj-sougat')
++    CONFIG = wandb.config
++    wandb.run.name = "CNN2_" + str(CONFIG.num_filters) + "_dn_" + str(CONFIG.dense_neurons) + "_opt_" + CONFIG.optimiser + "_dro_" + str(CONFIG.dropout) + "_bs_" + str(CONFIG.batch_size)
++
+     model.compile(
+-        optimizer= "adam",
++        optimizer= optimiser,
+         loss = tf.keras.losses.CategoricalCrossentropy(from_logits= True),
+         metrics = ["accuracy"]
+     )
+@@ -146,6 +195,8 @@ if __name__ == "__main__":
+         validation_steps = validation_generator.samples//batch_size,
+         epochs = epochs
+     )
++    model.save(".\\TrainedModel\\" + wandb.run.name)
++    wandb.finish()
+ 
+     end_time = time.time()
+ 

@@ -1,24 +1,17 @@
 {
-    "training_params":{
-        "learning_rate": 0.0001,
-        "epochs": 10,
-        "lr_decay_factor": 0,
-        "batch_size": 32,
-        "data_split": 0.8,
-        "data_augmentation": "False"
-    },
-
-    "architecture_params":{
-        "num_cnn_layers": 3, 
-        "kernel_size": 5,
-        "num_filters": [16, 32, 64, 128, 256],
-        "pool_kernel": 2,
-        "optimiser": "adam",
-        "weight_initialisation": "random",
-        "activation_cnn": "relu",
-        "activation_fc": "sigmoid",
-        "batch_norm_loc": "before",
-        "dense_neurons": 100,
-        "net_loss_func": "mean_square_error"
-    }
+    "learning_rate": 0.0001,
+    "epochs": 10,
+    "batch_size": 32,
+    "data_split": 0.8,
+    "data_augmentation": "False",
+    "dropout": 0.2,
+    "num_cnn_layers": 5, 
+    "kernel_size": 3,
+    "num_filters": [16, 32, 64, 128, 256],
+    "pool_kernel": 2,
+    "optimiser": "adam",
+    "weight_initialisation": "random",
+    "activation_cnn": "relu",
+    "activation_fc": "sigmoid",
+    "dense_neurons": 100
 }

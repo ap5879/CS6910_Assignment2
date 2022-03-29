@@ -1,0 +1,26 @@
+wandb_version: 1
+
+activation_cnn:
+  value: selu
+activation_fc:
+  value: sigmoid
+batch_size:
+  value: 141
+data_augmentation:
+  value: 'False'
+data_split:
+  value: 0.30425314903935474
+dense_neurons:
+  value: 65
+dropout:
+  value: 0.15139421343473203
+epochs:
+  value: 54
+kernel_size:
+  value: 5
+learning_rate:
+  value: 0.00020856592963307911
+optimiser:
+  value: adam
+pool_kernel:
+  value: 3
