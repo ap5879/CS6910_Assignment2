@@ -1,0 +1,80 @@
+wandb_version: 1
+
+_wandb:
+  desc: null
+  value:
+    cli_version: 0.12.10
+    code_path: code/cnn_image_classifier.py
+    framework: keras
+    is_jupyter_run: false
+    is_kaggle_kernel: false
+    python_version: 3.10.2
+    start_time: 1648586542
+    t:
+      1:
+      - 2
+      - 3
+      2:
+      - 2
+      - 3
+      3:
+      - 2
+      - 3
+      - 8
+      - 16
+      - 17
+      4: 3.10.2
+      5: 0.12.10
+      8:
+      - 3
+      - 5
+activation_cnn:
+  desc: null
+  value: relu
+activation_fc:
+  desc: null
+  value: sigmoid
+batch_size:
+  desc: null
+  value: 32
+data_augmentation:
+  desc: null
+  value: 'False'
+data_split:
+  desc: null
+  value: 0.8
+dense_neurons:
+  desc: null
+  value: 100
+dropout:
+  desc: null
+  value: 0.2
+epochs:
+  desc: null
+  value: 10
+kernel_size:
+  desc: null
+  value: 3
+learning_rate:
+  desc: null
+  value: 0.0001
+num_cnn_layers:
+  desc: null
+  value: 5
+num_filters:
+  desc: null
+  value:
+  - 16
+  - 32
+  - 64
+  - 128
+  - 256
+optimiser:
+  desc: null
+  value: adam
+pool_kernel:
+  desc: null
+  value: 2
+weight_initialisation:
+  desc: null
+  value: random

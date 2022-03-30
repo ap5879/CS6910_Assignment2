@@ -10,12 +10,12 @@ import json
 import sys
 import time
 from wandb.keras import WandbCallback
-import os
 
-def read_config(json_path):
-    with open(json_path, "r") as fp:
-        json_dict = json.load(fp)
-        return json_dict
+
+# def read_config(json_path):
+#     with open(json_path, "r") as fp:
+#         json_dict = json.load(fp)
+#         return json_dict
 
 def build_cnn_model(num_cnn_layers, num_filters, kernel_size, activation_cnn, activation_fc, dense_neurons, img_size, pool_kernel, dropout):
 
@@ -44,7 +44,7 @@ def build_cnn_model(num_cnn_layers, num_filters, kernel_size, activation_cnn, ac
 
     return model
 
-def data_generation(data_aug_flag, data_split, batch_size):
+def data_generation(data_aug_flag, data_split, batch_size, img_size):
     #Data Generation
     if data_aug_flag == "True":
         train_datagen = tf.keras.preprocessing.image.ImageDataGenerator(
@@ -100,16 +100,37 @@ def data_generation(data_aug_flag, data_split, batch_size):
     )
     return train_generator, validation_generator, test_generator
 
-def net_train(json_path, img_size):
+def net_train():
 
-    try:
-        json_dict = read_config(json_path)
-    except:
-        if len(sys.argv) < 2:
-            print("User Error: No config file provided...using default config....")
-            json_dict = read_config(".\\cnn_config.json")
+    # try:
+    #     json_dict = read_config(json_path)
+    # except:
+    #     if len(sys.argv) < 2:
+    #         print("User Error: No config file provided...using default config....")
+    #         json_dict = read_config(".\\cnn_config.json")
     
     #Read Configs
+
+    json_dict = {
+    "learning_rate": 0.0001,
+    "epochs": 5,
+    "batch_size": 32,
+    "data_split": 0.8,
+    "data_augmentation": "False",
+    "dropout": 0.2,
+    "num_cnn_layers": 5, 
+    "kernel_size": 3,
+    "num_filters": [16, 32, 64, 128, 256],
+    "pool_kernel": 2,
+    "optimiser": "adam",
+    "weight_initialisation": "random",
+    "activation_cnn": "relu",
+    "activation_fc": "sigmoid",
+    "dense_neurons": 100
+    }
+
+    img_size = (128, 128)
+
     learning_rate = json_dict["learning_rate"]
     epochs = json_dict["epochs"]
     batch_size = json_dict["batch_size"]
@@ -130,10 +151,11 @@ def net_train(json_path, img_size):
 
     config_default = dict(json_dict)
     wandb.init(project = 'CS6910-Assignment2-CNNs', config = config_default, entity='anuj-sougat')
-    CONFIG = wandb.config
-    wandb.run.name = "CNN2_" + str(CONFIG.num_filters) + "_dn_" + str(CONFIG.dense_neurons) + "_opt_" + CONFIG.optimiser + "_dro_" + str(CONFIG.dropout) + "_bs_" + str(CONFIG.batch_size)
     
-    train_generator, validation_generator, test_generator = data_generation(data_augmentation, data_split, batch_size)
+    CONFIG = wandb.config
+    wandb.run.name = "Assignment2_NumFltrs_" + str(CONFIG.num_filters) + "_DN_" + str(CONFIG.dense_neurons) + "_OPT_" + CONFIG.optimiser + "_DO_" + str(CONFIG.dropout) + "_BS_" + str(CONFIG.batch_size)
+    
+    train_generator, validation_generator, test_generator = data_generation(data_augmentation, data_split, batch_size, img_size)
 
     model.compile(
         optimizer= optimiser,
@@ -147,7 +169,7 @@ def net_train(json_path, img_size):
         validation_data = validation_generator,
         validation_steps = validation_generator.samples//batch_size,
         epochs = epochs,
-        callbacks = [WandbCallback]
+        callbacks = [WandbCallback()]
     )
     model.save(".\\TrainedModel\\" + wandb.run.name)
     wandb.finish()
@@ -156,11 +178,6 @@ def net_train(json_path, img_size):
 
 if __name__ == "__main__":
 
-    json_path = sys.argv[1]
-
-    img_size = (128, 128)
-
-    """
     sweep_config = {
     "name": "Bayesian Sweep",
     "method": "bayes",
@@ -200,12 +217,12 @@ if __name__ == "__main__":
         }
     }
 
-    sweep_id = wandb.sweep(sweep_config, project='CS6910-Assignment2', entity='anuj-sougat')
-    """
-
     start_time = time.time()
 
-    net_train(json_path, img_size)
+    net_train()
+    sweep_id = wandb.sweep(sweep_config, project='CS6910-Assignment2-CNNs', entity='anuj-sougat')
+
+    wandb.agent(sweep_id, net_train, count = 100)
 
     end_time = time.time()
 

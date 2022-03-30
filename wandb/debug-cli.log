@@ -94,3 +94,53 @@
 	pool_kernel: 3
 2022-03-29 23:03:28 INFO About to run command: python cnn_image_classifier.py --activation_cnn=selu --activation_fc=sigmoid --batch_size=198 --data_augmentation=True --data_split=0.28399040217938837 --dense_neurons=152 --dropout=0.18035274141395236 --epochs=33 --kernel_size=4 --learning_rate=0.0006429115323913897 --optimiser=rmsprop --pool_kernel=3
 2022-03-29 23:03:33 INFO Running runs: ['mxdastyd']
+2022-03-30 01:58:00 INFO Running runs: []
+2022-03-30 01:58:01 INFO Agent received command: run
+2022-03-30 01:58:01 INFO Agent starting run with config:
+	activation_cnn: selu
+	activation_fc: sigmoid
+	batch_size: 49
+	data_augmentation: False
+	data_split: 0.6997511504271197
+	dense_neurons: 187
+	dropout: 0.22631869564732143
+	epochs: 79
+	kernel_size: 4
+	learning_rate: 0.00016953055991896515
+	optimiser: nadam
+2022-03-30 01:58:01 INFO About to run command: python cnn_image_classifier.py --activation_cnn=selu --activation_fc=sigmoid --batch_size=49 --data_augmentation=False --data_split=0.6997511504271197 --dense_neurons=187 --dropout=0.22631869564732143 --epochs=79 --kernel_size=4 --learning_rate=0.00016953055991896515 --optimiser=nadam
+2022-03-30 01:58:06 INFO Running runs: ['2nfsr8eq']
+2022-03-30 01:58:28 INFO Cleaning up finished run: 2nfsr8eq
+2022-03-30 01:58:28 INFO Agent received command: run
+2022-03-30 01:58:28 INFO Agent starting run with config:
+	activation_cnn: relu
+	activation_fc: sigmoid
+	batch_size: 84
+	data_augmentation: True
+	data_split: 0.6271470966591386
+	dense_neurons: 136
+	dropout: 0.1717941148216552
+	epochs: 40
+	kernel_size: 2
+	learning_rate: 7.84320698177558e-05
+	optimiser: nadam
+2022-03-30 01:58:28 INFO About to run command: python cnn_image_classifier.py --activation_cnn=relu --activation_fc=sigmoid --batch_size=84 --data_augmentation=True --data_split=0.6271470966591386 --dense_neurons=136 --dropout=0.1717941148216552 --epochs=40 --kernel_size=2 --learning_rate=7.84320698177558e-05 --optimiser=nadam
+2022-03-30 01:58:33 INFO Running runs: ['l9r88xia']
+2022-03-30 01:58:39 INFO Cleaning up finished run: l9r88xia
+2022-03-30 01:58:39 INFO Agent received command: run
+2022-03-30 01:58:39 INFO Agent starting run with config:
+	activation_cnn: elu
+	activation_fc: sigmoid
+	batch_size: 103
+	data_augmentation: True
+	data_split: 0.6837809779569939
+	dense_neurons: 133
+	dropout: 0.15454584094934368
+	epochs: 64
+	kernel_size: 2
+	learning_rate: 0.00018303808626404913
+	optimiser: adam
+2022-03-30 01:58:39 INFO About to run command: python cnn_image_classifier.py --activation_cnn=elu --activation_fc=sigmoid --batch_size=103 --data_augmentation=True --data_split=0.6837809779569939 --dense_neurons=133 --dropout=0.15454584094934368 --epochs=64 --kernel_size=2 --learning_rate=0.00018303808626404913 --optimiser=adam
+2022-03-30 01:58:44 INFO Running runs: ['olrq0i17']
+2022-03-30 01:58:49 ERROR Detected 3 failed runs in the first 60 seconds, shutting down.
+2022-03-30 01:58:49 INFO To disable this check set WANDB_AGENT_DISABLE_FLAPPING=true

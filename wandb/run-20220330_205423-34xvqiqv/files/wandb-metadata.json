@@ -1,0 +1,22 @@
+{
+    "os": "Windows-10-10.0.19042-SP0",
+    "python": "3.10.2",
+    "heartbeatAt": "2022-03-30T15:24:38.999244",
+    "startedAt": "2022-03-30T15:24:23.252848",
+    "docker": null,
+    "cpu_count": 8,
+    "cuda": null,
+    "args": [],
+    "state": "running",
+    "program": "C:\\cs6910_assignments\\CS6910_Assignment2\\cnn_image_classifier.py",
+    "codePath": "cnn_image_classifier.py",
+    "git": {
+        "remote": "https://github.com/ap5879/CS6910_Assignment2.git",
+        "commit": "6d96ce3918d20e5059c7402aab1a315fc2fd6601"
+    },
+    "email": "panuj814@gmail.com",
+    "root": "C:/cs6910_assignments/CS6910_Assignment2",
+    "host": "ANPANDEY-LT1",
+    "username": "anpandey",
+    "executable": "C:\\Users\\anpandey\\AppData\\Local\\Programs\\Python\\Python310\\python.exe"
+}

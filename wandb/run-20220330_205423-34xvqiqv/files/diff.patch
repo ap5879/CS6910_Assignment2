@@ -1,0 +1,186 @@
+diff --git a/cnn_image_classifier.py b/cnn_image_classifier.py
+index 632fc72..2c5c199 100644
+--- a/cnn_image_classifier.py
++++ b/cnn_image_classifier.py
+@@ -10,12 +10,12 @@ import json
+ import sys
+ import time
+ from wandb.keras import WandbCallback
+-import os
+ 
+-def read_config(json_path):
+-    with open(json_path, "r") as fp:
+-        json_dict = json.load(fp)
+-        return json_dict
++
++# def read_config(json_path):
++#     with open(json_path, "r") as fp:
++#         json_dict = json.load(fp)
++#         return json_dict
+ 
+ def build_cnn_model(num_cnn_layers, num_filters, kernel_size, activation_cnn, activation_fc, dense_neurons, img_size, pool_kernel, dropout):
+ 
+@@ -44,7 +44,7 @@ def build_cnn_model(num_cnn_layers, num_filters, kernel_size, activation_cnn, ac
+ 
+     return model
+ 
+-def data_generation(data_aug_flag, data_split, batch_size):
++def data_generation(data_aug_flag, data_split, batch_size, img_size):
+     #Data Generation
+     if data_aug_flag == "True":
+         train_datagen = tf.keras.preprocessing.image.ImageDataGenerator(
+@@ -100,16 +100,37 @@ def data_generation(data_aug_flag, data_split, batch_size):
+     )
+     return train_generator, validation_generator, test_generator
+ 
+-def net_train(json_path, img_size):
++def net_train():
+ 
+-    try:
+-        json_dict = read_config(json_path)
+-    except:
+-        if len(sys.argv) < 2:
+-            print("User Error: No config file provided...using default config....")
+-            json_dict = read_config(".\\cnn_config.json")
++    # try:
++    #     json_dict = read_config(json_path)
++    # except:
++    #     if len(sys.argv) < 2:
++    #         print("User Error: No config file provided...using default config....")
++    #         json_dict = read_config(".\\cnn_config.json")
+     
+     #Read Configs
++
++    json_dict = {
++    "learning_rate": 0.0001,
++    "epochs": 5,
++    "batch_size": 32,
++    "data_split": 0.8,
++    "data_augmentation": "False",
++    "dropout": 0.2,
++    "num_cnn_layers": 5, 
++    "kernel_size": 3,
++    "num_filters": [16, 32, 64, 128, 256],
++    "pool_kernel": 2,
++    "optimiser": "adam",
++    "weight_initialisation": "random",
++    "activation_cnn": "relu",
++    "activation_fc": "sigmoid",
++    "dense_neurons": 100
++    }
++
++    img_size = (128, 128)
++
+     learning_rate = json_dict["learning_rate"]
+     epochs = json_dict["epochs"]
+     batch_size = json_dict["batch_size"]
+@@ -130,10 +151,11 @@ def net_train(json_path, img_size):
+ 
+     config_default = dict(json_dict)
+     wandb.init(project = 'CS6910-Assignment2-CNNs', config = config_default, entity='anuj-sougat')
++    
+     CONFIG = wandb.config
+-    wandb.run.name = "CNN2_" + str(CONFIG.num_filters) + "_dn_" + str(CONFIG.dense_neurons) + "_opt_" + CONFIG.optimiser + "_dro_" + str(CONFIG.dropout) + "_bs_" + str(CONFIG.batch_size)
++    wandb.run.name = "Assignment2_NumFltrs_" + str(CONFIG.num_filters) + "_DN_" + str(CONFIG.dense_neurons) + "_OPT_" + CONFIG.optimiser + "_DO_" + str(CONFIG.dropout) + "_BS_" + str(CONFIG.batch_size)
+     
+-    train_generator, validation_generator, test_generator = data_generation(data_augmentation, data_split, batch_size)
++    train_generator, validation_generator, test_generator = data_generation(data_augmentation, data_split, batch_size, img_size)
+ 
+     model.compile(
+         optimizer= optimiser,
+@@ -147,7 +169,7 @@ def net_train(json_path, img_size):
+         validation_data = validation_generator,
+         validation_steps = validation_generator.samples//batch_size,
+         epochs = epochs,
+-        callbacks = [WandbCallback]
++        callbacks = [WandbCallback()]
+     )
+     model.save(".\\TrainedModel\\" + wandb.run.name)
+     wandb.finish()
+@@ -156,11 +178,6 @@ def net_train(json_path, img_size):
+ 
+ if __name__ == "__main__":
+ 
+-    json_path = sys.argv[1]
+-
+-    img_size = (128, 128)
+-
+-    """
+     sweep_config = {
+     "name": "Bayesian Sweep",
+     "method": "bayes",
+@@ -200,12 +217,12 @@ if __name__ == "__main__":
+         }
+     }
+ 
+-    sweep_id = wandb.sweep(sweep_config, project='CS6910-Assignment2', entity='anuj-sougat')
+-    """
+-
+     start_time = time.time()
+ 
+-    net_train(json_path, img_size)
++    net_train()
++    sweep_id = wandb.sweep(sweep_config, project='CS6910-Assignment2-CNNs', entity='anuj-sougat')
++
++    wandb.agent(sweep_id, net_train, count = 100)
+ 
+     end_time = time.time()
+ 
+diff --git a/wandb/debug-cli.log b/wandb/debug-cli.log
+index dba1a83..4aa48cf 100644
+--- a/wandb/debug-cli.log
++++ b/wandb/debug-cli.log
+@@ -94,3 +94,53 @@
+ 	pool_kernel: 3
+ 2022-03-29 23:03:28 INFO About to run command: python cnn_image_classifier.py --activation_cnn=selu --activation_fc=sigmoid --batch_size=198 --data_augmentation=True --data_split=0.28399040217938837 --dense_neurons=152 --dropout=0.18035274141395236 --epochs=33 --kernel_size=4 --learning_rate=0.0006429115323913897 --optimiser=rmsprop --pool_kernel=3
+ 2022-03-29 23:03:33 INFO Running runs: ['mxdastyd']
++2022-03-30 01:58:00 INFO Running runs: []
++2022-03-30 01:58:01 INFO Agent received command: run
++2022-03-30 01:58:01 INFO Agent starting run with config:
++	activation_cnn: selu
++	activation_fc: sigmoid
++	batch_size: 49
++	data_augmentation: False
++	data_split: 0.6997511504271197
++	dense_neurons: 187
++	dropout: 0.22631869564732143
++	epochs: 79
++	kernel_size: 4
++	learning_rate: 0.00016953055991896515
++	optimiser: nadam
++2022-03-30 01:58:01 INFO About to run command: python cnn_image_classifier.py --activation_cnn=selu --activation_fc=sigmoid --batch_size=49 --data_augmentation=False --data_split=0.6997511504271197 --dense_neurons=187 --dropout=0.22631869564732143 --epochs=79 --kernel_size=4 --learning_rate=0.00016953055991896515 --optimiser=nadam
++2022-03-30 01:58:06 INFO Running runs: ['2nfsr8eq']
++2022-03-30 01:58:28 INFO Cleaning up finished run: 2nfsr8eq
++2022-03-30 01:58:28 INFO Agent received command: run
++2022-03-30 01:58:28 INFO Agent starting run with config:
++	activation_cnn: relu
++	activation_fc: sigmoid
++	batch_size: 84
++	data_augmentation: True
++	data_split: 0.6271470966591386
++	dense_neurons: 136
++	dropout: 0.1717941148216552
++	epochs: 40
++	kernel_size: 2
++	learning_rate: 7.84320698177558e-05
++	optimiser: nadam
++2022-03-30 01:58:28 INFO About to run command: python cnn_image_classifier.py --activation_cnn=relu --activation_fc=sigmoid --batch_size=84 --data_augmentation=True --data_split=0.6271470966591386 --dense_neurons=136 --dropout=0.1717941148216552 --epochs=40 --kernel_size=2 --learning_rate=7.84320698177558e-05 --optimiser=nadam
++2022-03-30 01:58:33 INFO Running runs: ['l9r88xia']
++2022-03-30 01:58:39 INFO Cleaning up finished run: l9r88xia
++2022-03-30 01:58:39 INFO Agent received command: run
++2022-03-30 01:58:39 INFO Agent starting run with config:
++	activation_cnn: elu
++	activation_fc: sigmoid
++	batch_size: 103
++	data_augmentation: True
++	data_split: 0.6837809779569939
++	dense_neurons: 133
++	dropout: 0.15454584094934368
++	epochs: 64
++	kernel_size: 2
++	learning_rate: 0.00018303808626404913
++	optimiser: adam
++2022-03-30 01:58:39 INFO About to run command: python cnn_image_classifier.py --activation_cnn=elu --activation_fc=sigmoid --batch_size=103 --data_augmentation=True --data_split=0.6837809779569939 --dense_neurons=133 --dropout=0.15454584094934368 --epochs=64 --kernel_size=2 --learning_rate=0.00018303808626404913 --optimiser=adam
++2022-03-30 01:58:44 INFO Running runs: ['olrq0i17']
++2022-03-30 01:58:49 ERROR Detected 3 failed runs in the first 60 seconds, shutting down.
++2022-03-30 01:58:49 INFO To disable this check set WANDB_AGENT_DISABLE_FLAPPING=true

@@ -1,0 +1,19 @@
+wandb_version: 1
+
+activation_cnn:
+  value: elu
+batch_size:
+  value: 32
+data_augmentation:
+  value: 'False'
+epochs:
+  value: 30
+learning_rate:
+  value: 0.001
+num_filters:
+  value:
+  - 32
+  - 64
+  - 128
+  - 256
+  - 512
